@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Eye, EyeOff } from "lucide-react";
 
 export default function SecretReveal() {
   const [input, setInput] = useState("");
   const [revealed, setRevealed] = useState(false);
   const [orientation, setOrientation] = useState("portrait");
-  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     const updateOrientation = () => {
@@ -20,7 +18,7 @@ export default function SecretReveal() {
   }, []);
 
   const handleCheck = () => {
-    if (input.trim() === "segreto123") {
+    if (input === "segreto123") {
       setRevealed(true);
     } else {
       alert("Combinazione errata. Riprova.");
@@ -37,27 +35,16 @@ export default function SecretReveal() {
       }}
     >
       {!revealed && (
-        <div className="bg-white bg-opacity-80 rounded-2xl p-6 shadow-xl w-full max-w-md text-center mx-2 sm:mx-auto">
+        <div className="bg-white bg-opacity-80 rounded-2xl p-6 shadow-xl w-full max-w-md text-center mx-2 sm:mx-auto animate-fade-in">
           <h1 className="text-lg sm:text-xl font-bold mb-4">
             Per svelare il segreto del luogo nascosto inserisci la combinazione corretta
           </h1>
-          <div className="relative mb-4">
-            <Input
-              type={showPassword ? "text" : "password"}
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Inserisci combinazione"
-              className="pr-10 text-base"
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword((prev) => !prev)}
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600"
-              aria-label="Mostra password"
-            >
-              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-            </button>
-          </div>
+          <Input
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Inserisci combinazione"
+            className="mb-4 text-base"
+          />
           <Button onClick={handleCheck} className="w-full text-base py-2">
             Svela il segreto
           </Button>
@@ -65,19 +52,16 @@ export default function SecretReveal() {
       )}
 
       {revealed && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-40 text-white text-center p-4">
-          <p className="text-xl font-semibold mb-6">
-            Hai svelato il luogo nascosto!
-          </p>
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
           <Button
             variant="secondary"
             onClick={() => {
               setRevealed(false);
               setInput("");
             }}
-            className="text-base px-4 py-2 bg-white text-black rounded-lg"
+            className="text-base px-4 py-2"
           >
-            ⬅ Torna indietro
+            ⬅ Indietro
           </Button>
         </div>
       )}
