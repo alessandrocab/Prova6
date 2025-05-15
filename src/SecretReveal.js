@@ -18,7 +18,7 @@ export default function SecretReveal() {
   }, []);
 
   const handleCheck = () => {
-    if (input === "segreto123") {
+    if (input.trim() === "segreto123") {
       setRevealed(true);
     } else {
       alert("Combinazione errata. Riprova.");
@@ -52,14 +52,14 @@ export default function SecretReveal() {
       )}
 
       {revealed && (
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
+        <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50">
           <Button
             variant="secondary"
             onClick={() => {
               setRevealed(false);
               setInput("");
             }}
-            className="text-base px-4 py-2"
+            className="text-base px-4 py-2 bg-black bg-opacity-60 text-white rounded-lg"
           >
             ⬅ Indietro
           </Button>
