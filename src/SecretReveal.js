@@ -18,7 +18,7 @@ export default function SecretReveal() {
   }, []);
 
   const handleCheck = () => {
-    if (input === "segreto123") {
+    if (input.trim() === "segreto123") {
       setRevealed(true);
     } else {
       alert("Combinazione errata. Riprova.");
@@ -35,7 +35,7 @@ export default function SecretReveal() {
       }}
     >
       {!revealed && (
-        <div className="bg-white bg-opacity-80 rounded-2xl p-6 shadow-xl w-full max-w-md text-center mx-2 sm:mx-auto animate-fade-in">
+        <div className="bg-white bg-opacity-80 rounded-2xl p-6 shadow-xl w-full max-w-md text-center mx-2 sm:mx-auto">
           <h1 className="text-lg sm:text-xl font-bold mb-4">
             Per svelare il segreto del luogo nascosto inserisci la combinazione corretta
           </h1>
@@ -52,14 +52,14 @@ export default function SecretReveal() {
       )}
 
       {revealed && (
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
+        <div className="fixed bottom-6 left-4 right-4 flex justify-center z-50">
           <Button
             variant="secondary"
             onClick={() => {
               setRevealed(false);
               setInput("");
             }}
-            className="text-base px-4 py-2"
+            className="text-base px-4 py-2 bg-black bg-opacity-60 text-white rounded-lg"
           >
             ⬅ Indietro
           </Button>
