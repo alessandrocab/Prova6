@@ -40,7 +40,7 @@ export default function SecretReveal() {
           }}
         >
           <h1 style={{ fontSize: "1.25rem", fontWeight: "bold", marginBottom: "1rem" }}>
-            Per svelare il segreto del luogo nascosto inserisci la combinazione corretta
+            Per svelare il segreto del luogo nascosto inserisci la combinazione corrett
           </h1>
           <input
             type="text"
