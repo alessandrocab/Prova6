@@ -52,14 +52,14 @@ export default function SecretReveal() {
       )}
 
       {revealed && (
-        <div className="absolute top-4 left-4 animate-slide-in">
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
           <Button
             variant="secondary"
             onClick={() => {
               setRevealed(false);
               setInput("");
             }}
-            className="text-sm px-3 py-1"
+            className="text-base px-4 py-2"
           >
             ⬅ Indietro
           </Button>
