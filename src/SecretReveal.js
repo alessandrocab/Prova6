@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 
 export default function SecretReveal() {
   const [input, setInput] = useState("");
@@ -41,12 +39,12 @@ export default function SecretReveal() {
             Per svelare il segreto del luogo nascosto inserisci la combinazione corretta
           </h1>
           <div className="relative mb-4">
-            <Input
+            <input
               type={showPassword ? "text" : "password"}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Inserisci combinazione"
-              className="pr-10 text-base"
+              className="pr-10 text-base w-full border rounded px-3 py-2"
             />
             <button
               type="button"
@@ -57,9 +55,12 @@ export default function SecretReveal() {
               {showPassword ? "🙈" : "👁"}
             </button>
           </div>
-          <Button onClick={handleCheck} className="w-full text-base py-2">
+          <button
+            onClick={handleCheck}
+            className="w-full text-base py-2 bg-blue-600 hover:bg-blue-700 text-white rounded"
+          >
             Svela il segreto
-          </Button>
+          </button>
         </div>
       )}
 
@@ -68,8 +69,7 @@ export default function SecretReveal() {
           <p className="text-xl font-semibold mb-6">
             Hai svelato il luogo nascosto!
           </p>
-          <Button
-            variant="secondary"
+          <button
             onClick={() => {
               setRevealed(false);
               setInput("");
@@ -77,9 +77,10 @@ export default function SecretReveal() {
             className="text-base px-4 py-2 bg-white text-black rounded-lg"
           >
             ⬅ Torna indietro
-          </Button>
+          </button>
         </div>
       )}
     </div>
   );
 }
+
